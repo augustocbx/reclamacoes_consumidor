@@ -1,0 +1,27 @@
+<table>
+  <tr>
+    <%= form_tag reclamacoes_path, :method => "get" do %>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Search", :contact_name => nil %>
+      <%= link_to "Limpar", reclamacoes_path %>
+    <% end %>
+    <div class="pag">
+      <table width="100%">
+        <tr>
+          <td>Area</td>
+          <td>Assunto</td>
+          <td>Problema</td>
+        </tr>
+        <% @reclamacaos.each do |reclamacao| %>
+          <tr class="client">
+            <td><%= reclamacao.area %></td>
+            <td><%= reclamacao.assunto %></td>
+            <td><%= reclamacao.problema %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </tr>
+</table>
+<hr/>
+Total de registros: <%= Reclamacao.all.size %>
